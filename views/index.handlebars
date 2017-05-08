@@ -1,5 +1,7 @@
 <h1>Burgers!</h1>
 
+<img src = "../../public/assets/img/burger.jpg"/>
+
 <h3>Please enter the burger you wish to eat.</h3>
 
 <ul>
@@ -9,7 +11,7 @@
        <span><p>Has this been devoured? {{this.devoured}}</p></span>
         <form action="/{{this.id}}?_method=PUT" method="POST">
         <input type="hidden" name="id" value="{{this.id}}">
-         <button type="submit">Devour Burger</button>
+         <button type="submit">Eat Burger</button>
         </form>
   	</ul>
   {{/each}}

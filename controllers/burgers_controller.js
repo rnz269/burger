@@ -7,12 +7,15 @@ module.exports = function(app) {
 
 
 // Routing
+
+// Render all burgers upon page load
 	app.get('/', function(req, res) {
 		burger.selectAll(function(result) {
 			res.render('index', {burgers:result});
 		});
 	});
 
+// Post a new burger
 	app.post('/', function(req, res) {
 		burger.insertOne(req.body.burger, function(result){
 			console.log(result);
@@ -20,6 +23,7 @@ module.exports = function(app) {
 		});
 	});
 
+// Updates the devoured trait of old burger
 	app.put('/:id', function(req, res) {
 		burger.updateOne(req.body.id, function(result) {
 			res.redirect("/");
