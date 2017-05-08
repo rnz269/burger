@@ -1,22 +1,21 @@
-var orm = require("./config/orm.js");
+var orm = require("../config/orm.js");
 
-var connection = require("./config/connection.js");
+var connection = require("../config/connection.js");
 
 var burger = {
-	selectAll: function(inputTable) {
-		orm.selectAll(function(inputTable, result) {
-			console.log(result);
+	selectAll: function(cb) {
+		orm.selectAll(function(result) {
+			cb(result);
 		});
 	},
-	insertOne: function(inputName) {
+	insertOne: function(inputName, cb) {
 		orm.insertOne('burgers', ['burger_name', 'devoured'], [inputName, false], function(result) {
-			console.log(result);
+			cb(result);
 		});
 	},
-
-	updateOne:	function(inputID) {
-		orm.updateOne('burgers', 'devoured', 0, 'id', inputID, function(result) {
-			console.log(result);
+	updateOne:	function(inputID, cb) {
+		orm.updateOne('burgers', 'devoured', 1, 'id', inputID, function(result) {
+			cb(result);
 		});
 	}
 }
